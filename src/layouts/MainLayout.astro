@@ -1,0 +1,33 @@
+---
+import '@fontsource/poppins';
+import '@fontsource-variable/onest';
+type Props={
+    title: string;
+}
+const {title} = Astro.props;
+---
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body class="min-h-screen px-8">
+        <slot/>
+    </body>
+</html>
+<style is:global>
+  :root{
+    color-scheme: light dark;
+  }
+  body{
+    background:#18181b;
+  }
+  body{
+  font-family: 'Poppins', sans-serif;
+  }
+  p{
+    font-family: 'Onest Variable', sans-serif;
+  }
+</style>
