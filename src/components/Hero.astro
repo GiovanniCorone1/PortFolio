@@ -1,22 +1,25 @@
 ---
 import '@fontsource/poppins/700.css';
+import MainLayout from '../layouts/MainLayout.astro';
 
 ---
-<header class="flex flex-col px-24 min-h-screen">
-    <nav>
-        <ul class="flex gap-12 uppercase font-medium text-xl">
-            <li><a href="/about">Sobre mí</a></li>
-            <li><a href="/projects">Proyectos</a></li>
-            <li><a href="/contact">Contacto</a></li>
-        </ul>
-    </nav>
-    <section class="grid grid-cols-[1.5fr_1fr]">
-        <div class="flex flex-col gap-4 mt-12">
-          <h2 class="text-6xl text-zinc-300">Giovanni Coronel</h2>
-          <h1 class="text-7xl text-blue-800 font-bold">Analista Desarrollador</h1>
-          <p class="text-3xl">Creo soluciones modernas, escalables y centradas en brindar experiencias de usuario excepcionales.</p>
-        </div>
-        <img src="" alt="">
-    </section>
-    <button class="bg-blue-800 p-3 cursor-pointer w-40 rounded-4xl my-7 hover:bg-blue-800/70 transition-colors duration-500 shadow-xl shadow-white/10 text-blue-100">Descargar CV</button>
-</header>
+<MainLayout title="Giovanni Coronel">
+    <main class="flex flex-col px-24 min-h-screen">
+        <nav>
+            <ul class="flex gap-12 uppercase font-medium text-xl">
+                <li><a href="/about">Sobre mí</a></li>
+                <li><a href="/projects">Proyectos</a></li>
+                <li><a href="/contact">Contacto</a></li>
+            </ul>
+        </nav>
+        <section class="grid grid-cols-[1.5fr_1fr]">
+            <div class="flex flex-col gap-4 mt-12">
+              <h2 class="text-6xl text-zinc-300">Giovanni Coronel</h2>
+              <h1 class="text-7xl text-blue-800 font-bold">Analista Desarrollador</h1>
+              <p class="text-3xl">Creo soluciones modernas, escalables y centradas en brindar experiencias de usuario excepcionales.</p>
+            </div>
+            <img src="" alt="">
+        </section>
+        <button class="bg-blue-800 p-3 cursor-pointer w-40 rounded-4xl my-7 hover:bg-blue-800/70 transition-colors duration-500 shadow-xl shadow-white/10 text-blue-100">Descargar CV</button>
+    </main>
+</MainLayout>
