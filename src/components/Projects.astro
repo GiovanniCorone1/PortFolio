@@ -1,85 +1,102 @@
 ---
 import ReactIcon from "./icons/ReactIcon.astro";
 import TailwindIcon from "./icons/TailwindIcon.astro";
+import JavascriptIcon from "./icons/JavascriptIcon.astro";
+import TypescriptIcon from "./icons/TypescriptIcon.astro";
 import myImage from "../assets/image.png"
 import myImage2 from "../assets/image2.png"
 import { Image } from 'astro:assets';
-import type { preview } from "astro";
 
 const TAGS={
     EXCEL:{
-        name: "Excel",
-        class:"bg-green-100 text-green-800",
-        icon:"./icons/excel.svg",
+      name: "Excel",
+      icon:"./icons/excel.svg",
     },
     REACT:{
-        name: "React",
-        class:"bg-blue-100 text-blue-800",
-        icon:ReactIcon,
+      name: "React",
+      icon:ReactIcon,
     },
     TAILWINDCSS:{
-        name: "Tailwind CSS",
-        class:"bg-green-100 text-sky-800",
-        icon:TailwindIcon,
+      name: "Tailwind CSS",
+      icon:TailwindIcon,
     },
-    // TYPESCRIPT:{
-    //     name: "TypeScript",
-    //     class:"",
-    //     icon:TypeScriptIcon,
-    // },
-    // JAVASCRIPT:{
-    //     name: "JavaScript",
-    //     class:"",
-    //     icon:JavaScriptIcon,
-    // },
+    TYPESCRIPT:{
+      name: "TypeScript",
+      icon:TypescriptIcon,
+    },
+     JAVASCRIPT:{
+      name: "JavaScript",
+      icon:JavascriptIcon,
+    },
 }
 const PROJECTS = [
     {
         title: "Empleabilidad USA",
         description: "Análisis tomando en cuenta parámetros como las diferentes industrias existentes.",
-        tags: [TAGS.REACT, TAGS.TAILWINDCSS, TAGS.EXCEL],
+        tags: ["Excel |","Análisis |", "Storytelling"],
         image: myImage,
         preview: "#"
     },
     {
-        title: "Proyecto 2",
-        description: "Descripción del proyecto 2",
+        title: "Music CLub",
+        description: "Web donde podrás encontrar y comprar instrumentos musicales. ¿Deseas tener tu propio e-commerce?",
         link: "#",
-        tags: [TAGS.REACT, TAGS.TAILWINDCSS],
+        tags: ["CSS |", "HTML |", "JavaScript"],
         image: myImage2,
         preview: "#"
     },
-    // {
-    //     title: "Proyecto 3",
-    //     description: "Descripción del proyecto 3",
-    //     link: "#",
-    //     tags: ["JavaScript", "React", "Node.js"],
-    //     image: "/path/to/image1.jpg",
-    // }
+    {
+        title: "Histórico de ventas en la industria de videojuegos",
+        description: "Reporte en Power BI que nos permita analizar las ventas de videojuegos a nivel mundial.",
+        link: "#",
+        tags: ["Análisis |", "Power BI |", "Storytelling"],
+        image: myImage,
+        preview: "#"
+    },
+    {
+        title: "GifTopía",
+        description: "GIFTopia te permite obtener el link de tus gif's favoritos, solo escribe una categoría en el buscador.",
+        link: "#",
+        tags: ["Javascript |", "React   |", "Tailwind CSS"],
+        image: myImage,
+        preview: "#"
+    },
+    {
+        title: "Calorie Tracker",
+        description: "Calcula las calorías usadas al comer y en tus ejercicios.",
+        link: "#",
+        tags: ["Typescript |", "React |", "Tailwind CSS"],
+        image: myImage,
+        preview: "#"
+    },
+    {
+        title: "Audífonos Pro",
+        description: "Landing Page de ventas de audifonos.",
+        link: "#",
+        tags: ["CSS |", "HTML |", "JavaScript"],
+        image: myImage2,
+        preview: "#"
+    }
 ];
 ---
-<section id="projects">
-    <h1>Proyectos</h1>
-    <div class="grid grid-cols-3 gap-6">
+<section id="projects" class="px-72">
+    <h1 class="text-5xl font-semibold">Proyectos</h1>
+    <div class="grid grid-cols-2 gap-6 my-4">
         {
             PROJECTS.map(({title, description, tags, image}) => (
-                <article class="bg-zinc-400 rounded-xl">
-                    <Image src={image} alt={title} class="w-full h-auto rounded-lg shadow-md" />
-                    {/* <ul class="flex flex-row gap-x-2">
-                    {tags.map((tag) => (
-                        <li>
-                            {/* <span class={`flex gap-x-2 rounded-full text-xs py-1 px-2 ${tag.class}`}>
-                            <tag.icon class="size-4"/>
-                              {tag.name}
-                            </span> 
+                <article class="bg-zinc-400 rounded-xl relative overflow-hidden">
+                    <Image src={image} alt={title} class="w-full h-auto rounded-lg shadow-md mask-b-from-10% mask-b-to-90% hover:scale-x-110 transition-transform duration-500"/>
+                    <ul class="flex flex-row gap-x-2 absolute top-4 bg-zinc-600/40 p-2">
+                        {tags.map((tag) => ( 
+                        <li class="">
+                           {tag}         
                         </li>
                         ))}
                     </ul> 
-                    */}
                     <div class="m-2 flex flex-col gap-2 text-body">
                       <h3 class="text-xl font-bold text-blue-800">{title}</h3>
                       <p class="text-base text-zinc-700">{description}</p>
-                      <a href="#" class="inline-block w-fit text-blue-200 bg-blue-800 rounded-xl p-2 hover:bg-blue-800/70 transition-colors duration-500">Preview</a>
+                      <a href="#" class="inline-block w-fit text-blue-100 bg-blue-800 rounded-xl p-2 hover:bg-blue-800/70 transition-colors duration-500 shadow-lg shadow-blue-800/40">Preview</a>
                     </div>
                 </article>
             ))
