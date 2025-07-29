@@ -5,13 +5,13 @@ import Github from './icons/Github.astro';
 import Gmail from './icons/Gmail.astro';
 const year = new Date().getFullYear();
 ---
-<footer class="border-t pt-4">
-    <div class="flex justify-between">
+<footer class="px-24 mt-8">
+    <div class="flex justify-between border-t pt-8">
         <div>
             <ul class="flex flex-col gap-4 font-medium">
-                <li><a href="" class="hover:text-zinc-400 transition-colors duration-500">Experiencia Laboral</a></li>
-                <li><a href="" class="hover:text-zinc-400 transition-colors duration-500">Proyectos</a></li>
-                <li><a href="" class="hover:text-zinc-400 transition-colors duration-500">Sobre Mí</a></li>
+                <li><a href="" class="hover:text-zinc-400 transition-colors duration-500 text-xl">Experiencia Laboral</a></li>
+                <li><a href="" class="hover:text-zinc-400 transition-colors duration-500 text-xl">Proyectos</a></li>
+                <li><a href="" class="hover:text-zinc-400 transition-colors duration-500 text-xl">Sobre Mí</a></li>
             </ul>
         </div>
         <div class="flex flex-col items-center gap-4 font-bold">
@@ -29,5 +29,5 @@ const year = new Date().getFullYear();
             </div>
         </div>
     </div>
-    <p class="text-center font-medium text-zinc-400">{year}, Created by Giovanni Coronel</p>
+    <p class="text-center text-lg font-medium text-zinc-400">{year}, Created by Giovanni Coronel</p>
 </footer>
