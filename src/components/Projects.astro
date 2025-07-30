@@ -1,34 +1,7 @@
 ---
-import ReactIcon from "./icons/ReactIcon.astro";
-import TailwindIcon from "./icons/TailwindIcon.astro";
-import JavascriptIcon from "./icons/JavascriptIcon.astro";
-import TypescriptIcon from "./icons/TypescriptIcon.astro";
 import myImage from "../assets/image.png"
 import myImage2 from "../assets/image2.png"
 import { Image } from 'astro:assets';
-
-const TAGS={
-    EXCEL:{
-      name: "Excel",
-      icon:"./icons/excel.svg",
-    },
-    REACT:{
-      name: "React",
-      icon:ReactIcon,
-    },
-    TAILWINDCSS:{
-      name: "Tailwind CSS",
-      icon:TailwindIcon,
-    },
-    TYPESCRIPT:{
-      name: "TypeScript",
-      icon:TypescriptIcon,
-    },
-     JAVASCRIPT:{
-      name: "JavaScript",
-      icon:JavascriptIcon,
-    },
-}
 const PROJECTS = [
     {
         title: "Empleabilidad USA",
@@ -83,8 +56,10 @@ const PROJECTS = [
     <h1 class="text-5xl font-semibold">Proyectos</h1>
     <div class="grid grid-cols-2 gap-6 my-4">
         {
-            PROJECTS.map(({title, description, tags, image}) => (
-                <article class="bg-zinc-400 rounded-xl relative overflow-hidden">
+            PROJECTS.map(({title, description, tags, image},i) => (
+                <article class="project-card bg-zinc-400 rounded-xl relative overflow-hidden"
+                style={`--delay: ${i * 0.1}s`}
+                >
                     <Image src={image} alt={title} class="w-full h-auto rounded-lg shadow-md mask-b-from-10% mask-b-to-90% hover:scale-x-110 transition-transform duration-500"/>
                     <ul class="flex flex-row gap-x-2 absolute top-4 bg-zinc-600/40 p-2">
                         {tags.map((tag) => ( 
@@ -103,3 +78,37 @@ const PROJECTS = [
         }
     </div>
 </section>
+<style>
+  .project-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out var(--delay),
+                transform 0.6s ease-out var(--delay);
+    will-change: opacity, transform;
+  }
+  .project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".project-card");
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    cards.forEach(card => observer.observe(card));
+  });
+</script>
