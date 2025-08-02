@@ -6,10 +6,10 @@ import MainLayout from '../layouts/MainLayout.astro';
 <MainLayout title="Giovanni Coronel">
     <main class="flex flex-col px-24 min-h-screen">
         <nav>
-            <ul class="flex gap-12 uppercase font-medium text-xl">
-                <li><a href="#about">Sobre mí</a></li>
-                <li><a href="#projects">Proyectos</a></li>
-                <li><a href="#contact">Contacto</a></li>
+            <ul class="flex gap-12 uppercase font-medium text-xl ">
+                <li><a href="#about" class="hover:text-zinc-400 transition-colors duration-500">Sobre mí</a></li>
+                <li><a href="#projects" class="hover:text-zinc-400 transition-colors duration-500">Proyectos</a></li>
+                <li><a href="#contact" class="hover:text-zinc-400 transition-colors duration-500">Contacto</a></li>
             </ul>
         </nav>
         <section class="grid grid-cols-[1.5fr_1fr]">
@@ -20,6 +20,9 @@ import MainLayout from '../layouts/MainLayout.astro';
             </div>
             <img src="" alt="">
         </section>
-        <button class="bg-blue-800 p-3 cursor-pointer w-40 rounded-4xl my-7 hover:bg-blue-800/70 transition-colors duration-500 shadow-xl shadow-white/10 text-blue-100">Descargar CV</button>
+        <div class="flex flex-row gap-8 items-center">
+          <button class="bg-blue-800 p-3 cursor-pointer rounded-4xl my-7 hover:bg-blue-800/70 transition-colors duration-500 shadow-xl shadow-white/10 text-blue-100">Descargar CV</button>
+          <a href="mailto:elgiovanni.cc@gmail.com" aria-label="Enviar correo electrónico" target="_blank" rel="noopener noreferrer" class="bg-zinc-200 text-zinc-600 py-3 px-4 rounded-4xl hover:bg-zinc-400 transition-colors duration-500">Escríbeme</a>
+        </div>
     </main>
 </MainLayout>
