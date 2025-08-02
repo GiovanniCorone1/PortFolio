@@ -1,13 +1,18 @@
 ---
 import myImage from "../assets/image.png"
-import myImage2 from "../assets/image2.png"
+import music from "../assets/musicClub.webp"
+import videojuegos from "../assets/videojuegos.webp"
+import giftopia from "../assets/giftopia.webp";
+import audifonos from "../assets/audifonos.webp";
+import calorie from "../assets/calorie.webp";
+import empleados from "../assets/empleados.webp";
 import { Image } from 'astro:assets';
 const PROJECTS = [
     {
         title: "Empleabilidad USA",
         description: "Análisis tomando en cuenta parámetros como las diferentes industrias existentes.",
         tags: ["Excel |","Análisis |", "Storytelling"],
-        image: myImage,
+        image: empleados,
         preview: "#"
     },
     {
@@ -15,15 +20,15 @@ const PROJECTS = [
         description: "Web donde podrás encontrar y comprar instrumentos musicales. ¿Deseas tener tu propio e-commerce?",
         link: "#",
         tags: ["CSS |", "HTML |", "JavaScript"],
-        image: myImage2,
-        preview: "#"
+        image: music,
+        preview: "https://music-club-oficial.netlify.app/"
     },
     {
         title: "Histórico de ventas en la industria de videojuegos",
         description: "Reporte en Power BI que nos permita analizar las ventas de videojuegos a nivel mundial.",
         link: "#",
         tags: ["Análisis |", "Power BI |", "Storytelling"],
-        image: myImage,
+        image: videojuegos,
         preview: "#"
     },
     {
@@ -31,24 +36,24 @@ const PROJECTS = [
         description: "GIFTopia te permite obtener el link de tus gif's favoritos, solo escribe una categoría en el buscador.",
         link: "#",
         tags: ["Javascript |", "React   |", "Tailwind CSS"],
-        image: myImage,
-        preview: "#"
+        image: giftopia,
+        preview: "https://heroes-pages-oficial.netlify.app/dc"
     },
     {
         title: "Calorie Tracker",
         description: "Calcula las calorías usadas al comer y en tus ejercicios.",
-        link: "#",
+        // link: "#",
         tags: ["Typescript |", "React |", "Tailwind CSS"],
-        image: myImage,
-        preview: "#"
+        image: calorie,
+        preview: "https://calorie-tracker-oficial.netlify.app/"
     },
     {
         title: "Audífonos Pro",
         description: "Landing Page de ventas de audifonos.",
         link: "#",
         tags: ["CSS |", "HTML |", "JavaScript"],
-        image: myImage2,
-        preview: "#"
+        image: audifonos,
+        preview: "https://audifonos-pro-oficial.netlify.app/"
     }
 ];
 ---
@@ -56,11 +61,11 @@ const PROJECTS = [
     <h1 class="text-5xl font-semibold">Proyectos</h1>
     <div class="grid grid-cols-2 gap-6 my-4">
         {
-            PROJECTS.map(({title, description, tags, image},i) => (
+            PROJECTS.map(({title, description, tags, image, preview},i) => (
                 <article class="project-card bg-zinc-400 rounded-xl relative overflow-hidden"
                 style={`--delay: ${i * 0.1}s`}
                 >
-                    <Image src={image} alt={title} class="w-full h-auto rounded-lg shadow-md mask-b-from-10% mask-b-to-90% hover:scale-x-110 transition-transform duration-500"/>
+                    <Image src={image} alt={title} class="w-full h-auto rounded-lg shadow-md mask-b-from-30% mask-b-to-90% hover:scale-110 hover:mask-b-to-90% transition-transform duration-500"/>
                     <ul class="flex flex-row gap-x-2 absolute top-4 bg-zinc-600/40 p-2">
                         {tags.map((tag) => ( 
                         <li class="">
@@ -71,7 +76,7 @@ const PROJECTS = [
                     <div class="m-2 flex flex-col gap-2 text-body">
                       <h3 class="text-xl font-bold text-blue-800">{title}</h3>
                       <p class="text-base text-zinc-700">{description}</p>
-                      <a href="#" class="inline-block w-fit text-blue-100 bg-blue-800 rounded-xl p-2 hover:bg-blue-800/70 transition-colors duration-500 shadow-lg shadow-blue-800/40">Preview</a>
+                      <a href={preview} target="_blank" rel="noopener noreferrer" class="inline-block w-fit text-blue-100 bg-blue-800 rounded-xl p-2 hover:bg-blue-800/70 transition-colors duration-500 shadow-lg shadow-blue-800/40">Preview</a>
                     </div>
                 </article>
             ))
