@@ -1,23 +1,128 @@
 ---
 import ExperienceItem from './ExperienceItem.astro';
-const EXPERIENCIE = [
-{
-    title: "Ingeniería de Software",
-    date: "Marzo, 2023 - Actualidad",
-    description: "Desarrollador de proyectos de software"
-}, {
-    title: "Instituto ELITEC",
-    date: "Febrero, 2025 - Actualidad",
-    description: "Desarrollo de software, creación de reportes, seguimiento ...",
-    link:"es"
-}];
+import excel       from '../assets/excel.png';
+import react       from '../assets/react.png';
+import powerbi     from '../assets/powerbi.png';
+import python      from '../assets/python.png';
+import typescript  from '../assets/typescript.png';
+import tailwind    from '../assets/tailwind.png';
+import figma       from '../assets/figma.png';
+import { Image }   from 'astro:assets';
 
+const EXPERIENCES = [
+  {
+    title:       "Ingeniería de Software",
+    date:        "Marzo, 2023 - Actualidad",
+    description: "Desarrollador de proyectos de software"
+  },
+  {
+    title:       "Instituto ELITEC",
+    date:        "Febrero, 2025 - Actualidad",
+    description: "Desarrollo de software, creación de reportes, seguimiento …",
+    link:        "es"
+  }
+];
 ---
-<h1 id="experiencie" class="text-5xl font-semibold px-24">Experiencia Laboral</h1>
+
+<h1 id="experiencie" class="text-5xl font-semibold px-24">
+  Experiencia Laboral
+</h1>
+
 <section class="flex justify-center py-8 px-24">
-    <ol class="items-center sm:flex">
-        {EXPERIENCIE.map((experiencie)=>(
-            <ExperienceItem {...experiencie} />
-        ))}
-    </ol>
+  <ol class="sm:flex">
+    {EXPERIENCES.map(item => <ExperienceItem {...item} />)}
+  </ol>
 </section>
+
+<!-- Slider de logos (duplicado para bucle continuo) -->
+<div class="logos" aria-label="Tecnologías y herramientas que manejo">
+  <div class="logos__slide">
+    <!-- copia 1 -->
+    <div class="group">
+      <Image class="imagen" src={excel}      alt="Logo de Excel" />
+      <Image class="imagen" src={react}      alt="Logo de React" />
+      <Image class="imagen" src={powerbi}    alt="Logo de Power BI" />
+      <img src={python.src} alt="" class="imagen" />
+      <Image class="imagen" src={typescript} alt="Logo de TypeScript" />
+      <Image class="imagen" src={tailwind}   alt="Logo de Tailwind CSS" />
+      <Image class="imagen" src={figma}      alt="Logo de Figma" />
+    </div>
+    <!-- copia 2 -->
+    <div class="group">
+      <Image class="imagen" src={excel}      alt="Logo de Excel" />
+      <Image class="imagen" src={react}      alt="Logo de React" />
+      <Image class="imagen" src={powerbi}    alt="Logo de Power BI" />
+      <Image class="imagen" src={typescript} alt="Logo de TypeScript" />
+      <Image class="imagen" src={tailwind}   alt="Logo de Tailwind CSS" />
+      <Image class="imagen" src={figma}      alt="Logo de Figma" />
+      <img src={python.src} alt="" class="imagen" />
+    </div>
+  </div>
+</div>
+
+<style>
+.logos {
+  width: 80vw;
+  margin: 2rem auto;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Máscaras de fade en bordes */
+.logos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255, 0));
+  pointer-events: none;
+  z-index: 1;
+}
+.logos::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255,0));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.logos__slide {
+  display: flex;
+  animation: scroll 10s linear infinite;
+  gap: 5rem;
+  will-change: transform;              /* sugiere optimización anticipada */ 
+  backface-visibility: hidden;        /* reduce flicker/jump visual */
+  transform: translateZ(0); 
+}
+
+.group {
+  display: flex;
+  gap: 5rem;
+}
+.imagen {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Loop continuo: mueve solo la mitad (porque hay dos copias) */
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Respeta preferencia de reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .logos__slide {
+    animation: none;
+  }
+}
+</style>
