@@ -1,11 +1,12 @@
 ---
-
+import SwipeCards from "./SwipeCards"
 ---
-<h1 id="aboutme" class="text-5xl font-semibold px-24 pt-8">Sobre Mí</h1>
+<h1 id="aboutme" class="text-5xl font-semibold px-24 pt-9">Sobre Mí</h1>
 <section class="grid grid-cols-[1.5fr_1fr] gap-4 my-4 px-24">
     <div class="text-body text-xl">
-        <p>Me especializo en análisis y desarrollo de software, combinando tecnologías como React y Python con herramientas como Excel y Power BI para crear soluciones eficientes y funcionales.</p>
-        <p>Valoro el trabajo en equipo y la colaboración interdisciplinaria, habilidades que he desarrollado a través de proyectos académicos y sociales. Entre mis experiencias destacadas se encuentran:</p>
+        <p>Me especializo en el análisis y desarrollo de software, creando soluciones eficientes y funcionales mediante tecnologías como React, Python, Excel y Power BI.</p>
+        <p>Valoro el trabajo en equipo y colaborar con profesionales de distintas disciplinas, habilidades que he fortalecido a través de diversos proyectos académicos y sociales.
+        Algunas de mis experiencias más destacadas incluyen:</p>
         <ul>
             <li class="list-disc"><strong class="text-blue-800">
                 Proyecto de inclusión en el CEBE "Los Viñedos":
@@ -15,5 +16,7 @@
         </ul>
         <p>Estoy comprometido con el aprendizaje continuo y con aplicar mis conocimientos para desarrollar soluciones tecnológicas con impacto positivo.</p>
     </div>
-    <div><h2>imagenes</h2></div>
+    <div>
+        <SwipeCards client:load/>
+    </div>
 </section>
