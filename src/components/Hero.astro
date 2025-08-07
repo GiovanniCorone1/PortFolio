@@ -1,10 +1,10 @@
 ---
 import '@fontsource/poppins/700.css';
 import MainLayout from '../layouts/MainLayout.astro';
-
+import yo from '../assets/yo.webp';
 ---
 <MainLayout title="Giovanni Coronel">
-    <main class="flex flex-col px-24 pt-8 min-h-screen">
+    <main class="flex flex-col md:px-24 px-8 pt-8 min-h-screen">
         <nav>
             <ul class="flex gap-12 uppercase font-medium text-xl ">
                 <li><a href="#aboutme" class="hover:text-zinc-400 transition-colors duration-500">Sobre mí</a></li>
@@ -12,13 +12,16 @@ import MainLayout from '../layouts/MainLayout.astro';
                 <li><a href="#projects" class="hover:text-zinc-400 transition-colors duration-500">Proyectos</a></li>
             </ul>
         </nav>
-        <section class="grid grid-cols-[1.5fr_1fr]">
+        <section class="grid md:grid-cols-[1.5fr_1fr]">
             <div class="flex flex-col gap-4 mt-12">
               <h2 class="text-6xl text-zinc-300">Giovanni Coronel</h2>
               <h1 class="text-7xl text-blue-800 font-bold">Analista Desarrollador</h1>
               <p class="text-3xl">Creo soluciones modernas, escalables y centradas en brindar experiencias de usuario excepcionales.</p>
             </div>
-            <img src="" alt="">
+            <div class="relative flex justify-around">
+                <img class="mask-x-from-70% mask-x-to-90% mask-b-from-50% mask-b-to-90% inline-block mt-8" src={yo.src} alt="">
+                <span class="absolute bottom-8 text-xl">Ingeniería de Software - UNMSM</span>
+            </div>
         </section>
         <div class="flex flex-row gap-8 items-center">
           <button class="bg-blue-800 p-3 cursor-pointer rounded-4xl my-7 hover:bg-blue-800/70 transition-colors duration-500 shadow-xl shadow-white/10 text-blue-100">Descargar CV</button>
