@@ -34,20 +34,16 @@ export default function MyModal() {
                 transition
                 className="w-full max-w-md rounded-xl bg-white/5 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
                 >
-              <DialogTitle as="h3" className="text-base/7 font-medium text-white">
+              <DialogTitle as="h3" className="text-base/7 font-bold text-white">
                 Instituto ELITEC
               </DialogTitle>
-              <ul className="mt-2 text-sm/6 text-white/50">
-                <p>
-                  Your payment has been successfully submitted. We’ve sent you an email with all of the details of your
-                  order.
-                </p>
-                <li>1.Your payment has been successfully submitted. We’ve sent you an email with all of the details of your
-                order.</li>
-                <li>2.Your payment has been successfully submitted. We’ve sent you an email with all of the details of your
-                order.</li>
-                <li>3.Your payment has been successfully submitted. We’ve sent you an email with all of the details of your
-                order.</li>
+              <ul className="mt-2 text-sm/6 text-zinc-100/90">
+                <li>•	Automatización de procesos mediante scripts en Python, logrando una reducción del 50% en el tiempo de envío de recordatorios académicos a través de WhatsApp Web.</li>
+                <li>•	Desarrollo web con React:<br/>
+                  - Aplicación que permite a los estudiantes calcular su nota final y nota mínima necesaria para aprobar un curso, mejorando la experiencia digital del usuario.<br/>
+                  - Creación de un formulario de aceptación de términos y condiciones para el uso de sus datos personales
+                </li>
+                <li>•	Creación de dashboards interactivos con Power BI facilitando la toma de decisiones basada en datos (Data-Driven Decisions).</li>
               </ul>
                   <div className="mt-6 flex justify-end">
                     <button
