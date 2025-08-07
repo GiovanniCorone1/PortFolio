@@ -8,14 +8,14 @@ import calorie from "../assets/calorie.webp";
 import empleados from "../assets/empleados.webp";
 import { Image } from 'astro:assets';
 const PROJECTS = [
-    {
+    {   type: "Reporte",
         title: "Empleabilidad USA",
         description: "Análisis tomando en cuenta parámetros como las diferentes industrias existentes.",
         tags: ["Excel |","Análisis |", "Storytelling"],
         image: empleados,
-        preview: "#"
+        preview: "/empleabilidad.pdf"
     },
-    {
+    {   type: "Web App",
         title: "Music CLub",
         description: "Web donde podrás encontrar y comprar instrumentos musicales. ¿Deseas tener tu propio e-commerce?",
         link: "#",
@@ -23,45 +23,51 @@ const PROJECTS = [
         image: music,
         preview: "https://music-club-oficial.netlify.app/"
     },
-    {
+    {   
+        type: "Reporte",
         title: "Histórico de ventas en la industria de videojuegos",
         description: "Reporte en Power BI que nos permita analizar las ventas de videojuegos a nivel mundial.",
         link: "#",
         tags: ["Análisis |", "Power BI |", "Storytelling"],
         image: videojuegos,
-        preview: "#"
+        preview: "/videojuegos.pdf"
     },
     {
+        type: "Web App",      
         title: "GifTopía",
         description: "GIFTopia te permite obtener el link de tus gif's favoritos, solo escribe una categoría en el buscador.",
-        link: "#",
         tags: ["Javascript |", "React   |", "Tailwind CSS"],
         image: giftopia,
         preview: "https://heroes-pages-oficial.netlify.app/dc"
     },
-    {
+    {   type:"Web App",
         title: "Calorie Tracker",
         description: "Calcula las calorías usadas al comer y en tus ejercicios.",
-        // link: "#",
         tags: ["Typescript |", "React |", "Tailwind CSS"],
         image: calorie,
         preview: "https://calorie-tracker-oficial.netlify.app/"
     },
-    {
+    {   type: "Web App",
         title: "Audífonos Pro",
         description: "Landing Page de ventas de audifonos.",
-        link: "#",
         tags: ["CSS |", "HTML |", "JavaScript"],
         image: audifonos,
         preview: "https://audifonos-pro-oficial.netlify.app/"
     }
 ];
+type Props = {
+    type: "Web App" | "Reporte";
+    description:string;
+    title: string;
+    tags: string[];
+};
+const { type } = Astro.props;
 ---
 <h1 class="text-5xl font-semibold px-24">Proyectos</h1>
-<section id="projects" class="px-72">
-    <div class="grid grid-cols-2 gap-6 my-4">
+<section id="projects" class="px-52">
+    <div class="grid grid-cols-2 gap-x-24 gap-y-10 my-4">
         {
-            PROJECTS.map(({title, description, tags, image, preview},i) => (
+            PROJECTS.map(({title, description, tags, image, preview, type},i) => (
                 <article class="project-card bg-zinc-400 rounded-xl relative overflow-hidden"
                 style={`--delay: ${i * 0.1}s`}
                 >
@@ -76,7 +82,9 @@ const PROJECTS = [
                     <div class="m-2 flex flex-col gap-2 text-body">
                       <h3 class="text-xl font-bold text-blue-800">{title}</h3>
                       <p class="text-base text-zinc-700">{description}</p>
-                      <a href={preview} target="_blank" rel="noopener noreferrer" class="inline-block w-fit text-blue-100 bg-blue-800 rounded-xl p-2 hover:bg-blue-800/70 transition-colors duration-500 shadow-lg shadow-blue-800/40">Preview</a>
+                      <a href={preview} target="_blank" rel="noopener noreferrer" class="inline-block w-fit text-blue-100 bg-blue-800 rounded-xl p-2 hover:bg-blue-800/70 transition-colors duration-500 shadow-lg shadow-blue-800/40">
+                        {type === "Web App" ? "Ver Proyecto" : "Ver Reporte"}
+                      </a>
                     </div>
                 </article>
             ))
@@ -113,7 +121,6 @@ const PROJECTS = [
     }, {
       threshold: 0.1
     });
-
     cards.forEach(card => observer.observe(card));
   });
 </script>
