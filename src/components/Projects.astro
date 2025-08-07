@@ -55,17 +55,10 @@ const PROJECTS = [
         preview: "https://audifonos-pro-oficial.netlify.app/"
     }
 ];
-type Props = {
-    type: "Web App" | "Reporte";
-    description:string;
-    title: string;
-    tags: string[];
-};
-const { type } = Astro.props;
 ---
-<h1 class="text-5xl font-semibold px-24">Proyectos</h1>
-<section id="projects" class="px-52">
-    <div class="grid grid-cols-2 gap-x-24 gap-y-10 my-4">
+<h1 class="text-5xl font-semibold md:px-24">Proyectos</h1>
+<section id="projects" class="md:px-52 px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-24 gap-y-10 my-4">
         {
             PROJECTS.map(({title, description, tags, image, preview, type},i) => (
                 <article class="project-card bg-zinc-400 rounded-xl relative overflow-hidden"
