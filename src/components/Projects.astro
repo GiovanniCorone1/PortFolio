@@ -57,11 +57,11 @@ const PROJECTS = [
 ];
 ---
 <h1 class="text-5xl font-semibold md:px-24">Proyectos</h1>
-<section id="projects" class="md:px-52 px-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-24 gap-y-10 my-4">
+<section id="projects" class="md:px-52 px-0">
+    <div class="grid grid-cols-1 lg:grid-cols-2 md:gap-x-24 gap-y-10 my-4 justify-items-center">
         {
             PROJECTS.map(({title, description, tags, image, preview, type},i) => (
-                <article class="project-card bg-zinc-400 rounded-xl relative overflow-hidden"
+                <article class="project-card bg-zinc-400 rounded-xl relative overflow-hidden mx-auto max-w-sm"
                 style={`--delay: ${i * 0.1}s`}
                 >
                     <Image src={image} alt={title} class="w-full h-auto rounded-lg shadow-md mask-b-from-30% mask-b-to-90% hover:scale-110 hover:mask-b-to-90% transition-transform duration-500"/>

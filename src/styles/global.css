@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@layer utilities {
+/* @layer utilities {
   .vertical-rl { writing-mode: vertical-rl; }
   .orientation-upright { text-orientation: upright; }
-}
+} */
