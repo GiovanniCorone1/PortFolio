@@ -2,15 +2,19 @@
 import '@fontsource/poppins/700.css';
 import MainLayout from '../layouts/MainLayout.astro';
 import yo from '../assets/yo.webp';
+import MenuIcon from '../components/icons/MenuIcon.astro';
+import CloseIcon from './icons/CloseIcon.astro';
 ---
 <MainLayout title="Giovanni Coronel">
     <main class="flex flex-col md:px-24 lg:min-h-screen">
-        <nav>
-            <ul class="flex flex-col md:flex-row items-center gap-12 uppercase font-medium text-xl">
-                <li><a href="#aboutme" class="hover:text-zinc-400 transition-colors duration-500">Sobre mí</a></li>
-                <li><a href="#experiencie" class="hover:text-zinc-400 transition-colors duration-500">Experiencia</a></li>
-                <li><a href="#projects" class="hover:text-zinc-400 transition-colors duration-500">Proyectos</a></li>
-            </ul>
+        <button class="toggle-button">
+          <MenuIcon class="menu-icon"/>
+          <CloseIcon class="close-icon hidden"/>
+        </button>
+        <nav class="navbar md:flex flex-col md:flex-row items-center gap-12 uppercase font-medium text-xl">
+                <a href="#aboutme" class="hover:text-zinc-400 transition-colors duration-500">Sobre mí</a>
+                <a href="#experiencie" class="hover:text-zinc-400 transition-colors duration-500">Experiencia</a>
+                <a href="#projects" class="hover:text-zinc-400 transition-colors duration-500">Proyectos</a>
         </nav>
         <section class="grid md:grid-cols-[1.5fr_1fr]">
             <div class="flex flex-col md:items-start items-center gap-4 mt-12">
@@ -29,3 +33,41 @@ import yo from '../assets/yo.webp';
         </div>
     </main>
 </MainLayout>
+<style>
+    .menu-icon{
+        display: none;
+    }
+    @media (max-width: 768px) {
+        .menu-icon {
+            display: block;
+        }
+        .navbar{
+            position: fixed;
+            width: 100%;
+            top: 5rem;
+            left: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            display: none;
+        }
+        .navbar.active {
+            display: block;
+        }
+        .navbar a {
+            display: block;
+            padding: 0.5rem 1rem;
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+<script>
+    const menuIcon = document.querySelector('.menu-icon');
+    const closeIcon = document.querySelector('.close-icon');
+    const navbar = document.querySelector('.navbar');
+    menuIcon?.addEventListener('click',()=>{
+        menuIcon?.classList.remove('block');
+        closeIcon?.classList.toggle('hidden');
+        navbar?.classList.toggle('active');
+    })
+</script>
