@@ -6,68 +6,86 @@ import MenuIcon from '../components/icons/MenuIcon.astro';
 import CloseIcon from './icons/CloseIcon.astro';
 ---
 <MainLayout title="Giovanni Coronel">
-    <main class="flex flex-col md:px-24 lg:min-h-screen">
-        <button class="toggle-button">
-          <MenuIcon class="menu-icon"/>
-          <CloseIcon class="close-icon hidden"/>
-        </button>
-        <nav class="navbar md:flex flex-col md:flex-row items-center gap-12 uppercase font-medium text-xl">
-                <a href="#aboutme" class="hover:text-zinc-400 transition-colors duration-500">Sobre mí</a>
-                <a href="#experiencie" class="hover:text-zinc-400 transition-colors duration-500">Experiencia</a>
-                <a href="#projects" class="hover:text-zinc-400 transition-colors duration-500">Proyectos</a>
-        </nav>
-        <section class="grid md:grid-cols-[1.5fr_1fr]">
-            <div class="flex flex-col md:items-start items-center gap-4 mt-12">
-              <h2 class="text-2xl lg:text-6xl text-zinc-300">Giovanni Coronel</h2>
-              <h1 class="text-4xl lg:text-7xl text-blue-800 font-bold">Analista Desarrollador</h1>
-              <p class="text-xl lg:text-3xl">Creo soluciones modernas, escalables y centradas en brindar experiencias de usuario excepcionales.</p>
-            </div>
-            <div class="relative flex justify-around">
-                <img class="mask-x-from-70% mask-x-to-90% mask-b-from-50% mask-b-to-90% inline-block mt-8" src={yo.src} alt="">
-                <span class="absolute bottom-8 text-xl">Ingeniería de Software - UNMSM</span>
-            </div>
-        </section>
-        <div class="flex flex-row gap-8 items-center justify-center md:justify-start ">
-          <a class="bg-blue-800 p-3 cursor-pointer rounded-4xl my-7 hover:bg-blue-800/70 transition-colors duration-500 shadow-xl shadow-white/10 text-blue-100" href="/CV.pdf" target="_blank" rel="noopener noreferrer">Descargar CV</a>
-          <a href="mailto:elgiovanni.cc@gmail.com" aria-label="Enviar correo electrónico" target="_blank" rel="noopener noreferrer" class="bg-zinc-200 text-zinc-600 py-3 px-4 rounded-4xl hover:bg-zinc-400 transition-colors duration-500">Escríbeme</a>
-        </div>
-    </main>
+  <main class="flex flex-col md:px-24 lg:min-h-screen">
+    <!-- botón que SOLO se muestra en móvil (md:hidden) -->
+    <button
+      class="toggle-button md:hidden"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="main-nav"
+    >
+      <MenuIcon class="menu-icon" />
+      <CloseIcon class="close-icon hidden" />
+    </button>
+
+    <!-- navbar: en desktop se mostrará por las utilidades md:flex; en móvil lo controla tu CSS (.navbar.active) -->
+    <nav id="main-nav" class="navbar md:flex flex-col md:flex-row items-center gap-12 uppercase font-medium text-xl">
+      <a href="#aboutme" class="hover:text-zinc-400 transition-colors duration-500">Sobre mí</a>
+      <a href="#experiencie" class="hover:text-zinc-400 transition-colors duration-500">Experiencia</a>
+      <a href="#projects" class="hover:text-zinc-400 transition-colors duration-500">Proyectos</a>
+    </nav>
+
+    <section class="grid md:grid-cols-[1.5fr_1fr]">
+      <div class="flex flex-col md:items-start items-center gap-4 mt-12">
+        <h2 class="text-2xl lg:text-6xl text-zinc-300">Giovanni Coronel</h2>
+        <h1 class="text-4xl lg:text-7xl text-blue-800 font-bold">Analista Desarrollador</h1>
+        <p class="text-xl lg:text-3xl">Creo soluciones modernas, escalables y centradas en brindar experiencias de usuario excepcionales.</p>
+      </div>
+      <div class="relative flex justify-around">
+        <img class="mask-x-from-70% mask-x-to-90% mask-b-from-50% mask-b-to-90% inline-block mt-8" src={yo.src} alt="">
+        <span class="absolute bottom-8 text-xl">Ingeniería de Software - UNMSM</span>
+      </div>
+    </section>
+
+    <div class="flex flex-row gap-8 items-center justify-center md:justify-start ">
+      <a class="bg-blue-800 p-3 cursor-pointer rounded-4xl my-7 hover:bg-blue-800/70 transition-colors duration-500 shadow-xl shadow-white/10 text-blue-100" href="/CV.pdf" target="_blank" rel="noopener noreferrer">Descargar CV</a>
+      <a href="mailto:elgiovanni.cc@gmail.com" aria-label="Enviar correo electrónico" target="_blank" rel="noopener noreferrer" class="bg-zinc-200 text-zinc-600 py-3 px-4 rounded-4xl hover:bg-zinc-400 transition-colors duration-500">Escríbeme</a>
+    </div>
+  </main>
 </MainLayout>
+
 <style>
-    .menu-icon{
-        display: none;
+  /* Mantén la regla del navbar para móvil (oculta por defecto y se muestra con .active) */
+  @media (max-width: 768px) {
+    .navbar{
+      position: sticky;
+      width: 100%;
+      top: 5rem;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 1rem 0;
+      display: none; /* oculto por defecto en móvil */
     }
-    @media (max-width: 768px) {
-        .menu-icon {
-            display: block;
-        }
-        .navbar{
-            position: fixed;
-            width: 100%;
-            top: 5rem;
-            left: 0;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 1rem 0;
-            display: none;
-        }
-        .navbar.active {
-            display: block;
-        }
-        .navbar a {
-            display: block;
-            padding: 0.5rem 1rem;
-            width: 100%;
-            text-align: center;
-        }
+    .navbar.active {
+      display: block; /* visible cuando agregues .active */
     }
+    .navbar a {
+      display: block;
+      padding: 0.5rem 1rem;
+      width: 100%;
+      text-align: center;
+    }
+  }
 </style>
+
 <script>
-    const menuIcon = document.querySelector('.menu-icon');
-    const closeIcon = document.querySelector('.close-icon');
-    const navbar = document.querySelector('.navbar');
-    menuIcon?.addEventListener('click',()=>{
-        menuIcon?.classList.remove('block');
-        closeIcon?.classList.toggle('hidden');
-        navbar?.classList.toggle('active');
-    })
+  // Esperamos que el DOM esté listo (si tu script está al final del body normalmente bastará)
+  const toggleButton = document.querySelector('.toggle-button');
+  const menuIcon = document.querySelector('.menu-icon');
+  const closeIcon = document.querySelector('.close-icon');
+  const navbar = document.querySelector('.navbar');
+
+  toggleButton?.addEventListener('click', () => {
+    // alternar iconos
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+
+    // alternar visibilidad del navbar en móvil (tu CSS controla display con .active)
+    navbar?.classList.toggle('active');
+
+    // accesibilidad: actualizar aria-expanded
+    const expanded = toggleButton.getAttribute('aria-expanded') === 'true';
+    toggleButton.setAttribute('aria-expanded', (!expanded).toString());
+  });
 </script>
