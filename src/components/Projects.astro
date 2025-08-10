@@ -1,4 +1,4 @@
----
+<!-- ---
 import myImage from "../assets/image.png"
 import music from "../assets/musicClub.webp"
 import videojuegos from "../assets/videojuegos.webp"
@@ -114,6 +114,137 @@ const PROJECTS = [
     }, {
       threshold: 0.1
     });
+    cards.forEach(card => observer.observe(card));
+  });
+</script> -->
+---
+import myImage from "../assets/image.png"
+import music from "../assets/musicClub.webp"
+import videojuegos from "../assets/videojuegos.webp"
+import giftopia from "../assets/giftopia.webp";
+import audifonos from "../assets/audifonos.webp";
+import calorie from "../assets/calorie.webp";
+import empleados from "../assets/empleados.webp";
+import { Image } from 'astro:assets';
+
+const PROJECTS = [
+    {   
+        type: "Reporte",
+        title: "Empleabilidad USA",
+        description: "Análisis tomando en cuenta parámetros como las diferentes industrias existentes.",
+        tags: ["Excel |","Análisis |", "Storytelling"],
+        image: empleados,
+        preview: "/empleabilidad.pdf"
+    },
+    {   
+        type: "Web App",
+        title: "Music CLub",
+        description: "Web donde podrás encontrar y comprar instrumentos musicales. ¿Deseas tener tu propio e-commerce?",
+        link: "#",
+        tags: ["CSS |", "HTML |", "JavaScript"],
+        image: music,
+        preview: "https://music-club-oficial.netlify.app/"
+    },
+    {   
+        type: "Reporte",
+        title: "Histórico de ventas en la industria de videojuegos",
+        description: "Reporte en Power BI que nos permita analizar las ventas de videojuegos a nivel mundial.",
+        tags: ["Análisis |", "Power BI |", "Storytelling"],
+        image: videojuegos,
+        preview: "/videojuegos.pdf"
+    },
+    {
+        type: "Web App",      
+        title: "GifTopía",
+        description: "GIFTopia te permite obtener el link de tus gif's favoritos, solo escribe una categoría en el buscador.",
+        tags: ["Javascript |", "React   |", "Tailwind CSS"],
+        image: giftopia,
+        preview: "https://heroes-pages-oficial.netlify.app/dc"
+    },
+    {   
+        type:"Web App",
+        title: "Calorie Tracker",
+        description: "Calcula las calorías usadas al comer y en tus ejercicios.",
+        tags: ["Typescript |", "React |", "Tailwind CSS"],
+        image: calorie,
+        preview: "https://calorie-tracker-oficial.netlify.app/"
+    },
+    {   
+        type: "Web App",
+        title: "Audífonos Pro",
+        description: "Landing Page de ventas de audifonos.",
+        tags: ["CSS |", "HTML |", "JavaScript"],
+        image: audifonos,
+        preview: "https://audifonos-pro-oficial.netlify.app/"
+    }
+];
+---
+
+<h1 class="text-3xl md:text-5xl font-semibold px-4 md:px-24">Proyectos</h1>
+
+<section id="projects" class="px-4 md:px-12 lg:px-52">
+    <div class="grid grid-cols-1 lg:grid-cols-2 md:gap-x-24 gap-y-12 my-8 justify-items-center">
+        {
+            PROJECTS.map(({title, description, tags, image, preview, type},i) => (
+                <article 
+                  class="project-card bg-zinc-400 rounded-xl relative overflow-hidden mx-auto w-full max-w-sm"
+                  style={`--delay: ${i * 0.1}s`}
+                >
+                    <Image 
+                      src={image} 
+                      alt={title} 
+                      width={500} height={300} 
+                      class="w-full h-auto rounded-lg shadow-md mask-b-from-30% mask-b-to-90% hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <ul class="flex flex-wrap gap-x-2 absolute top-4 left-4 bg-zinc-600/40 p-2 rounded-lg text-sm md:text-base">
+                        {tags.map((tag) => ( 
+                        <li>{tag}</li>
+                        ))}
+                    </ul> 
+                    <div class="m-4 flex flex-col gap-2 text-body">
+                      <h3 class="text-lg md:text-xl font-bold text-blue-800">{title}</h3>
+                      <p class="text-sm md:text-base text-zinc-700">{description}</p>
+                      <a href={preview} target="_blank" rel="noopener noreferrer" 
+                         class="inline-block w-fit text-blue-100 bg-blue-800 rounded-xl py-2 px-4 hover:bg-blue-800/70 transition-colors duration-500 shadow-lg shadow-blue-800/40">
+                        {type === "Web App" ? "Ver Proyecto" : "Ver Reporte"}
+                      </a>
+                    </div>
+                </article>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+  .project-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out var(--delay),
+                transform 0.6s ease-out var(--delay);
+    will-change: opacity, transform;
+  }
+  .project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".project-card");
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
     cards.forEach(card => observer.observe(card));
   });
 </script>
