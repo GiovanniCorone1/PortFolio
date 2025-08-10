@@ -1,4 +1,4 @@
----
+<!-- ---
 import ExperienceItem from './ExperienceItem.astro';
 import excel       from '../assets/excel.webp';
 import react       from '../assets/react.webp';
@@ -34,10 +34,9 @@ const EXPERIENCES = [
   </ol>
 </section>
 
-<!-- Slider de logos (duplicado para bucle continuo) -->
 <div class="logos" aria-label="Tecnologías y herramientas que manejo">
   <div class="logos__slide">
-    <!-- copia 1 -->
+    
     <div class="group">
       <Image class="imagen" src={excel}      alt="Logo de Excel" />
       <Image class="imagen" src={react}      alt="Logo de React" />
@@ -47,7 +46,7 @@ const EXPERIENCES = [
       <Image class="imagen" src={tailwind}   alt="Logo de Tailwind CSS" />
       <Image class="imagen" src={figma}      alt="Logo de Figma" />
     </div>
-    <!-- copia 2 -->
+    
     <div class="group">
       <Image class="imagen" src={excel}      alt="Logo de Excel" />
       <Image class="imagen" src={react}      alt="Logo de React" />
@@ -68,7 +67,6 @@ const EXPERIENCES = [
   position: relative;
 }
 
-/* Máscaras de fade en bordes */
 .logos::before {
   content: '';
   position: absolute;
@@ -96,8 +94,8 @@ const EXPERIENCES = [
   display: flex;
   animation: scroll 10s linear infinite;
   gap: 5rem;
-  will-change: transform;              /* sugiere optimización anticipada */ 
-  backface-visibility: hidden;        /* reduce flicker/jump visual */
+  will-change: transform;               
+  backface-visibility: hidden;       
   transform: translateZ(0); 
 }
 
@@ -113,16 +111,156 @@ const EXPERIENCES = [
   transition: transform 0.3s ease-in-out;
 }
 
-/* Loop continuo: mueve solo la mitad (porque hay dos copias) */
 @keyframes scroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* Respeta preferencia de reducir movimiento */
 @media (prefers-reduced-motion: reduce) {
   .logos__slide {
     animation: none;
   }
 }
+</style>  -->
+---
+import ExperienceItem from './ExperienceItem.astro';
+import excel       from '../assets/excel.webp';
+import react       from '../assets/react.webp';
+import powerbi     from '../assets/powerbi.webp';
+import python      from '../assets/python.webp';
+import typescript  from '../assets/typescript.webp';
+import tailwind    from '../assets/tailwind.webp';
+import figma       from '../assets/figma.webp';
+import { Image }   from 'astro:assets';
+
+const EXPERIENCES = [
+  {
+    title:       "Ingeniería de Software",
+    date:        "Marzo, 2023 - Actualidad",
+    description: "Desarrollador de proyectos de software"
+  },
+  {
+    title:       "Instituto ELITEC",
+    date:        "Febrero, 2025 - Actualidad",
+    description: "Desarrollo de software, creación de reportes, seguimiento …",
+    link:        "es"
+  }
+];
+---
+
+<h1 id="experiencie" class="text-3xl md:text-5xl font-semibold px-4 md:px-24">
+  Experiencia Laboral
+</h1>
+
+<section class="flex justify-center py-8 px-4 md:px-24">
+  <ol class="flex flex-col sm:flex-row gap-8 sm:gap-12">
+    {EXPERIENCES.map(item => <ExperienceItem {...item} />)}
+  </ol>
+</section>
+
+<!-- Slider de logos (duplicado para bucle continuo) -->
+<div class="logos" aria-label="Tecnologías y herramientas que manejo">
+  <div class="logos__slide">
+    <!-- copia 1 -->
+    <div class="group">
+      <Image class="imagen" src={excel}      alt="Logo de Excel"      loading="lazy"/>
+      <Image class="imagen" src={react}      alt="Logo de React"      loading="lazy"/>
+      <Image class="imagen" src={powerbi}    alt="Logo de Power BI"   loading="lazy"/>
+      <Image class="imagen" src={python}     alt="Logo de Python"     loading="lazy"/>
+      <Image class="imagen" src={typescript} alt="Logo de TypeScript" loading="lazy"/>
+      <Image class="imagen" src={tailwind}   alt="Logo de Tailwind"   loading="lazy"/>
+      <Image class="imagen" src={figma}      alt="Logo de Figma"      loading="lazy"/>
+    </div>
+    <!-- copia 2 -->
+    <div class="group">
+      <Image class="imagen" src={excel}      alt="Logo de Excel"      loading="lazy"/>
+      <Image class="imagen" src={react}      alt="Logo de React"      loading="lazy"/>
+      <Image class="imagen" src={powerbi}    alt="Logo de Power BI"   loading="lazy"/>
+      <Image class="imagen" src={typescript} alt="Logo de TypeScript" loading="lazy"/>
+      <Image class="imagen" src={tailwind}   alt="Logo de Tailwind"   loading="lazy"/>
+      <Image class="imagen" src={figma}      alt="Logo de Figma"      loading="lazy"/>
+      <Image class="imagen" src={python}     alt="Logo de Python"     loading="lazy"/>
+    </div>
+  </div>
+</div>
+
+<style>
+  .logos {
+    width: 90vw;
+    max-width: 1200px;
+    margin: 2rem auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Máscaras de fade en bordes */
+  .logos::before,
+  .logos::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .logos::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+  }
+  .logos::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+  }
+
+  .logos__slide {
+    display: flex;
+    animation: scroll 10s linear infinite;
+    gap: 3rem;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  .group {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .imagen {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    flex-shrink: 0;
+    transition: transform 0.3s ease-in-out;
+  }
+  .imagen:hover {
+    transform: scale(1.1);
+  }
+
+  /* Loop continuo */
+  @keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Menos espacio en móvil */
+  @media (max-width: 640px) {
+    .group, .logos__slide {
+      gap: 1.5rem;
+    }
+    .imagen {
+      width: 60px;
+      height: 60px;
+    }
+    .logos::before, .logos::after {
+      width: 40px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logos__slide {
+      animation: none;
+    }
+  }
 </style>
